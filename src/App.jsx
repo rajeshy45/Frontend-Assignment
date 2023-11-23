@@ -1,12 +1,17 @@
 import Header from "./components/Header";
 import styles from "./App.module.scss";
 import Editor from "./components/Editor/Editor";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "./components/Form/Form";
 
 function App() {
     const [schema, setSchema] = useState(null); // stores the UI Schema
     const [json, setJson] = useState({}); // stores the request JSON
+
+    // resetting json whenever schema changes
+    useEffect(() => {
+        setJson({});
+    }, [schema, setJson]);
 
     return (
         <div className={`${styles.App} p-2`}>

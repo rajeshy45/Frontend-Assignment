@@ -3,19 +3,19 @@ import Form from "../Form";
 
 export default function Ignore({ data, json, setJson, showAdvanced }) {
     const [ignoreJson, setIgnoreJson] = useState({});
-    const [action, setAction] = useState("enable");
+    const [action, setAction] = useState("enable"); // assuming only actions are enable and disable
 
     function evaluateConditions() {
         try {
             for (const condition of data.conditions) {
-                let props = condition.jsonKey.split(".");
+                let props = condition.jsonKey.split("."); 
 
                 let val = null;
                 for (const prop of props) {
                     val = json[prop];
                 }
 
-                if (condition.op === "==") {
+                if (condition.op === "==") { // info now provided about any other operators
                     if (val === condition.value) {
                         setAction(condition.action);
                     } else {

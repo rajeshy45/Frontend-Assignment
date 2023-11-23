@@ -4,6 +4,7 @@ import Modal from "../Modal";
 
 export default function Form({ schema, level, json, setJson }) {
     try {
+        // show advanced fields toggle
         const [showAdvanced, setShowAdvanced] = useState(false);
 
         function handleShowAdvancedChange(event) {
